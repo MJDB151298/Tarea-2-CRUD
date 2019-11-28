@@ -1,1 +1,1 @@
-web: java -jar build/libs/Tarea 2 Crud.jar
+web: java -jar build/libs/Tarea-2-Crud.jar

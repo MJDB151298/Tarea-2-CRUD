@@ -13,6 +13,9 @@ import static spark.Spark.*;
 
 public class Main {
     public static void main(String[] args) {
+        //Seteando el puerto en Heroku
+        port(getHerokuAssignedPort());
+
         staticFiles.location("/spark/template/freemarker");
 
         get("/inicio/", (request, response) -> {
@@ -58,6 +61,14 @@ public class Main {
             response.redirect("/inicio/");
             return "";
         });
+    }
+
+    static int getHerokuAssignedPort() {
+        ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 4567; //Retorna el puerto por defecto en caso de no estar en Heroku.
     }
 
     public static String renderFreemarker(Map<String, Object> model, String templatePath) {

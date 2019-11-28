@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
 group 'Tarea 2 CRUD'
@@ -19,4 +21,19 @@ dependencies {
     compile 'org.freemarker:freemarker:2.3.26-incubating'
     compile 'org.thymeleaf:thymeleaf:3.0.5.RELEASE'
     compile "org.slf4j:slf4j-simple:1.7.21"
+}
+
+shadowJar {
+    baseName = 'sparkjava_demo'
+    classifier = null
+    version = null
+}
+
+/**
+ * tarea necesaria para heroku si optamos por la tarea de Shadowjar
+ * en el archivo Procfile debe estar el siguiente comando:
+ * web: java -jar build/libs/sparkjava_demo.jar
+ */
+task stage {
+    dependsOn shadowJar
 }

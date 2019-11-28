@@ -141,10 +141,16 @@
                     $(".modal-title").text('Nuevo Estudiante');
                     accion = "/guardar/";
 
+                    $("#inputMatricula").attr('placeholder', "");
+                    $("#inputNombre").attr('placeholder', "");
+                    $("#inputApellido").attr('placeholder', "");
+                    $("#inputTelefono").attr('placeholder', "");
+
                     $("#inputMatricula").prop('required',true);
                     $("#inputNombre").prop('required',true);
                     $("#inputApellido").prop('required',true);
                     $("#inputTelefono").prop('required',true);
+
                 });
 
                 $('.container').on('click', 'button#eliminar', function() {

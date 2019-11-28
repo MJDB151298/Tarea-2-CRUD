@@ -17,24 +17,9 @@ public class Main {
 
         get("/inicio/", (request, response) -> {
             Map<String, Object> atributos = new HashMap<>();
-            /**Estudiante estudiante1 = new Estudiante(20160370, "Marcos", "De Mota", "8312");
-            Estudiante estudiante2 = new Estudiante(20160740, "Kiana", "Almonte", "8312");
-            Estudiante estudiante3 = new Estudiante(20161562, "Saul", "Feliciano", "8312");
-            Controladora.getInstance().addEstudiante(estudiante1);
-            Controladora.getInstance().addEstudiante(estudiante2);
-            Controladora.getInstance().addEstudiante(estudiante3);**/
             atributos.put("listaEstudiantes", Controladora.getInstance().getMisEstudiantes());
             return renderFreemarker(atributos, "bienvenidaEstudiantes.ftl");
         });
-
-       /** post("/eliminar/", (request, response) -> {
-            String id = request.params("id");
-            Estudiante estudiante = Controladora.getInstance().buscarEstudiante(id);
-            Controladora.getInstance().eliminarEstudiante(estudiante);
-
-            response.redirect("/inicio/");
-            return "test";
-        });**/
 
         get("/eliminar/:id", (request, response) -> {
             String id = request.params("id");
